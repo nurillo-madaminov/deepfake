@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Единый портал интерактивных государственных услуг</title>
     <link rel="stylesheet" href="./css/output.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
   </head>
   <body>
     <nav class="bg-white w-full z-20 top-0 start-0 border-b border-neutral-300">
@@ -130,8 +140,8 @@
                   >ПИН код</label
                 >
                 <input
-                  type="number"
-                  id="visitors"
+                  type="text"
+                  id="code"
                   class="bg-neutral-secondary-medium border border-neutral-300 text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-2.5 rounded-lg shadow-xs placeholder:text-body"
                   placeholder=""
                   required
@@ -139,6 +149,7 @@
               </div>
               <button
                 type="button"
+                id="btn"
                 class="text-white w-full bg-green-600 rounded-lg box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
               >
                 Ochish
@@ -170,5 +181,21 @@
         >
       </div>
     </footer>
+    <script>
+      const input = document.getElementById("code");
+      const btn = document.getElementById("btn");
+
+      btn.onclick = function () {
+        if (input.value == "0781") {
+          window.open(
+            "https://drive.google.com/file/d/1ZtSRNljLDtLtKtnpGgfuwAr5MCgi5sz-/view",
+            "_blank"
+          );
+        } else {
+          input.value = "";
+          alert("Noto'g'ri ko'd");
+        }
+      };
+    </script>
   </body>
 </html>
